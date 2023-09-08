@@ -1,0 +1,22 @@
+import os
+
+# Source directory where the images are located
+source_directory = '/Users/jerryhughes/Desktop/Cleaned_data/pol_random_sample'
+
+# Get a list of all image files in the source directory
+image_files = [
+    file for file in os.listdir(source_directory)
+    if file.lower().endswith(('.jpg', '.jpeg', '.png'))
+]
+
+# Sort the image files to maintain consistency
+image_files.sort()
+
+# Rename the image files with numbers from 1 to 500
+for i, image in enumerate(image_files):
+    original_path = os.path.join(source_directory, image)
+    new_filename = str(i + 1) + '.jpg'  # Assuming the file extension is '.jpg'
+    new_path = os.path.join(source_directory, new_filename)
+    os.rename(original_path, new_path)
+
+print("Images have been successfully renamed.")
